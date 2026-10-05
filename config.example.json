@@ -1,0 +1,90 @@
+{
+  "secret": "your-secret-password-will-be-generated-automatically",
+  "port": 5000,
+  "default_mode": "notebook",
+  "notebooks": {
+    "default": "https://notebooklm.google.com/notebook/YOUR_NOTEBOOK_ID"
+  },
+  "providers": [
+    {
+      "name": "gemini",
+      "type": "gemini",
+      "enabled": true,
+      "vision": true,
+      "keys": [
+        "env:GEMINI_API_KEY"
+      ],
+      "models": [
+        "gemini-2.0-flash",
+        "gemini-1.5-flash"
+      ],
+      "read_models": [
+        "gemini-1.5-flash"
+      ]
+    },
+    {
+      "name": "groq",
+      "type": "openai",
+      "enabled": true,
+      "vision": false,
+      "base_url": "https://api.groq.com/openai/v1",
+      "keys": [
+        "env:GROQ_API_KEY"
+      ],
+      "models": [
+        "llama-3.1-70b-versatile",
+        "mixtral-8x7b-32768"
+      ]
+    },
+    {
+      "name": "openrouter",
+      "type": "openai",
+      "enabled": false,
+      "vision": false,
+      "base_url": "https://openrouter.ai/api/v1",
+      "keys": [
+        "env:OPENROUTER_API_KEY"
+      ],
+      "models": [
+        "meta-llama/llama-2-70b-chat",
+        "mistralai/mistral-7b-instruct"
+      ]
+    },
+    {
+      "name": "ollama",
+      "type": "openai",
+      "enabled": false,
+      "vision": false,
+      "base_url": "http://localhost:11434/v1",
+      "keys": [
+        "local-no-key-needed"
+      ],
+      "models": [
+        "llama2",
+        "mistral"
+      ]
+    }
+  ],
+  "chat_order": [
+    "gemini",
+    "groq",
+    "openrouter"
+  ],
+  "memory_order": [
+    "groq",
+    "gemini",
+    "openrouter"
+  ],
+  "read_order": [
+    "gemini"
+  ],
+  "question_delimiter": "#",
+  "memory_auto_route": true,
+  "memory_auto_learn": true,
+  "memory_max_entries": 12,
+  "chat_memory_turns": 8,
+  "short_answers": true,
+  "history_enabled": true,
+  "chrome_minimized": true,
+  "startup_selftest": true
+}
